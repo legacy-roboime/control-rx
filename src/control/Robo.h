@@ -12,14 +12,17 @@
 #include "GPIO.h"
 #include "Pwm.h"
 #include "Encoder.h"
-#include "TimerTime.h"
+#include "TimerTime2.h"
 #include "Motor.h"
 
 class Robo {
 public:
 	Robo();
-	void set_pwms(int dutys[4]);
-	Timer_Time *Tempo;
+	void control_speed();
+	void control_pos();
+	int pos[4];
+	int speed[4];
+	Timer_Time2 *robo_timer;
 	Pwm *ahpwms[4];
 	GPIO *algpios[4];
     Pwm *bhpwms[4];

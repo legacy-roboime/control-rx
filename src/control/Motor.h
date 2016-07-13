@@ -10,7 +10,7 @@
 #include "GPIO.h"
 #include "Pwm.h"
 #include "Encoder.h"
-#include "TimerTime.h"
+#include "TimerTime2.h"
 
 #ifndef MOTOR_H_
 #define MOTOR_H_
@@ -22,7 +22,7 @@ public:
 			Pwm *B_High,
 			GPIO *B_Low,
 			Encoder *Enc,
-			Timer_Time *Time);
+			Timer_Time2 *MTimer);
 	void Control_Pos(uint32_t hold_position);
 	void Control_Speed(int16_t hold_speed);
 	void Answer(int16_t answer);
@@ -32,7 +32,7 @@ private:
 	GPIO *Motor_A_Low;
 	GPIO *Motor_B_Low;
 	Encoder *Motor_Enc;
-	Timer_Time *Motor_Time;
+	Timer_Time2 *Motor_Time;
 	int16_t Pos_Calc_Answer(uint32_t, uint32_t);
 	int16_t Spe_Calc_Answer(int32_t, int32_t);
 	int16_t Pos_Last_Error[20];

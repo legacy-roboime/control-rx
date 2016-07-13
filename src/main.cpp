@@ -43,6 +43,8 @@ uint8_t USB_receive_and_put(NRF* radio_ptr);
 NRF* radio_ptr;
 
 Robo robo;
+Timer_Time robo_irq_timer;
+
 
 int main(void)
 {
@@ -78,6 +80,9 @@ extern "C" {
 void TIM6_DAC_IRQHandler(){
   if(TIM_GetITStatus(TIM6,TIM_IT_Update)){
     TIM_ClearITPendingBit(TIM6,TIM_IT_Update);
+    for(int i=0; i<4; i++){
+	  robo.control_speed();
+    }
   }
 }
 }

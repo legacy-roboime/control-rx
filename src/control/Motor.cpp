@@ -11,14 +11,14 @@ Motor::Motor(Pwm *A_High,
 		Pwm *B_High,
 		GPIO *B_Low,
 		Encoder *Enc,
-		Timer_Time *Time)
+		Timer_Time2 *MTimer)
 {
 	Motor_A_High = A_High;
 	Motor_A_Low = A_Low;
 	Motor_B_High = B_High;
 	Motor_B_Low = B_Low;
 	Motor_Enc = Enc;
-	Motor_Time = Time;
+	Motor_Time = MTimer;
 }
 
 void Motor::Control_Pos(uint32_t hold_position){
@@ -100,23 +100,24 @@ int16_t Motor::Pos_Calc_Answer(uint32_t position, uint32_t hold_position)
 //Falta definir o que é o valor speed, que deve ter sinal
 int16_t Motor::Spe_Calc_Answer(int32_t speed, int32_t hold_speed){
 
-	int16_t integral;
+	//int16_t integral;
 	int16_t error;
-	int16_t derivative;
-	int i;
+	//int16_t derivative;
+	//int i;
 //verde oliva
 	error = (int16_t) (speed - hold_speed);
-	for(i=0; i<19; i++){
-		Speed_Last_Error[i]=Speed_Last_Error[i+1];
-	}
-	Speed_Last_Error[19] = error;
-	integral=0;
-	derivative=Speed_Last_Error[19]-Speed_Last_Error[18];
+	//for(i=0; i<19; i++){
+	//	Speed_Last_Error[i]=Speed_Last_Error[i+1];
+	//}
+	//Speed_Last_Error[19] = error;
+	//integral=0;
+	//derivative=Speed_Last_Error[19]-Speed_Last_Error[18];
 
-	for(i=0; i<20; i++){
-		integral = integral+Speed_Last_Error[i];
-	}
-	if (integral > 600/0.18) integral = 600/0.18;
-	return (int16_t) ((error)*0.81+(integral)*0.36 - derivative*2.25);
+	//for(i=0; i<20; i++){
+	//	integral = integral+Speed_Last_Error[i];
+	//}
+	//if (integral > 600/0.18) integral = 600/0.18;
+	return (int16_t) (hold_speed);
+	//return (int16_t) ((error)*0.81+(integral)*0.36 - derivative*2.25);
 	//Kp = 0.81, Ki = 0.36, Kd = 2.25
 }
