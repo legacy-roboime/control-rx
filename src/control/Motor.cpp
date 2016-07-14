@@ -24,7 +24,7 @@ Motor::Motor(Pwm *A_High,
 void Motor::Control_Pos(uint32_t hold_position){
 	uint32_t position;
 	int16_t answer;
-	position = Motor_Enc->position();
+	position = Motor_Enc->get_position();
 	answer = this->Pos_Calc_Answer(position, hold_position);	//this eh opcional por estar
 																//pos_calc_answer estar dentro
 																//do objeto
@@ -33,16 +33,13 @@ void Motor::Control_Pos(uint32_t hold_position){
 };
 
 void Motor::Control_Speed(int16_t hold_speed){
-	int32_t speed;
-	int16_t answer;
-	uint32_t position = Motor_Enc->position();
-	uint32_t time = Motor_Time->current_time();
-
-	speed = (position - last_position)/(time - last_time);
-	answer = this->Spe_Calc_Answer(speed, hold_speed);
-	this->Answer(answer);
-	last_position = position;
-	last_time = time;
+	int16_t speed;
+	int16_t vel_answer;
+	uint32_t position = Motor_Enc->get_position();
+	Motor_Enc->set_position((uint32_t) 20000);
+	speed = 100*((int16_t)position-20000);
+    vel_answer = Spe_Calc_Answer(speed, hold_speed);
+	this->Answer((int16_t)vel_answer);
 	return;
 };
 
@@ -99,25 +96,30 @@ int16_t Motor::Pos_Calc_Answer(uint32_t position, uint32_t hold_position)
 
 //Falta definir o que é o valor speed, que deve ter sinal
 int16_t Motor::Spe_Calc_Answer(int32_t speed, int32_t hold_speed){
-
-	//int16_t integral;
-	int16_t error;
-	//int16_t derivative;
-	//int i;
-//verde oliva
-	error = (int16_t) (speed - hold_speed);
-	//for(i=0; i<19; i++){
-	//	Speed_Last_Error[i]=Speed_Last_Error[i+1];
-	//}
-	//Speed_Last_Error[19] = error;
-	//integral=0;
-	//derivative=Speed_Last_Error[19]-Speed_Last_Error[18];
-
-	//for(i=0; i<20; i++){
-	//	integral = integral+Speed_Last_Error[i];
-	//}
-	//if (integral > 600/0.18) integral = 600/0.18;
-	return (int16_t) (hold_speed);
-	//return (int16_t) ((error)*0.81+(integral)*0.36 - derivative*2.25);
-	//Kp = 0.81, Ki = 0.36, Kd = 2.25
+	if(hold_speed>1000)
+		hold_speed=1000;
+	if(hold_speed<-1000)
+		hold_speed=-1000;
+	double vel_answer;
+	float error;
+	float derivative;
+	float integral;
+	error=speed-hold_speed;
+	derivative = error - Speed_Last_Error[0];
+	for(int i = 9; i>0; i--){
+		Speed_Last_Error[i] = Speed_Last_Error[i-1];
+	}
+	Speed_Last_Error[0] = error;
+	for(int i=0; i<10; i++){
+		integral = integral + Speed_Last_Error[i];
+	}
+	vel_answer=last_vel_answer + error*0.04 + derivative*0;
+	if(vel_answer > 1000){
+		vel_answer = 1000;
+	}
+	if(vel_answer < -1000){
+		vel_answer = -1000;
+	}
+	last_vel_answer = vel_answer;
+	return (int16_t) vel_answer;
 }

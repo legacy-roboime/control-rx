@@ -31,7 +31,7 @@ void Robo::control_speed(){
 	}
 }
 void Robo::set_speed(int v_r, int v_t, int w){
-	uint8_t R = 14; //TODO valor temporario
+	uint8_t R = 1; //TODO valor temporario
 	speed[0] = -v_r*0.5 + v_t*0.86603 + w*R;
 	speed[1] = -v_r*0.5 - v_t*0.86603 + w*R;
 	speed[2] = v_r*0.70711 - v_t*0.70711 + w*R;

@@ -36,8 +36,9 @@ private:
 	int16_t Pos_Calc_Answer(uint32_t, uint32_t);
 	int16_t Spe_Calc_Answer(int32_t, int32_t);
 	int16_t Pos_Last_Error[20];
-	int16_t Speed_Last_Error[20];
+	float Speed_Last_Error[10];
 	uint32_t last_position;
 	uint32_t last_time;
+	double last_vel_answer = 0;
 };
 #endif /* MOTOR_H_ */

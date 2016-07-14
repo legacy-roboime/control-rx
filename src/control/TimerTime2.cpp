@@ -15,8 +15,8 @@ Timer_Time2::Timer_Time2(){
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_TimeBaseStructure.TIM_ClockDivision=0;
 	TIM_TimeBaseStructure.TIM_CounterMode=TIM_CounterMode_Up;
-	TIM_TimeBaseStructure.TIM_Prescaler=(SystemCoreClock/2/10000);
-	TIM_TimeBaseStructure.TIM_Period=1;
+	TIM_TimeBaseStructure.TIM_Prescaler=(SystemCoreClock);
+	TIM_TimeBaseStructure.TIM_Period=1000000;
 	TIM_TimeBaseInit(TIM7,&TIM_TimeBaseStructure);
 
 	//codigo novo

@@ -59,7 +59,6 @@ int main(void)
   radio_ptr=&radio;
   radio.RX_configure();
   radio.start_listen();
-
   while (1)
   {
 		if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_5)){

@@ -17,7 +17,8 @@ public:
 			uint32_t Pin1, uint32_t Pin2,
 			TIM_TypeDef * Tim, uint8_t Af_Pin, uint8_t Af_Pin2,
 			uint8_t Af);
-	uint32_t position();
+	uint32_t get_position();
+	void set_position(uint32_t pos);
 private:
 	TIM_TypeDef * Encoder_Tim;
 };

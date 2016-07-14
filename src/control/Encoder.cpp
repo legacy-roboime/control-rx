@@ -52,11 +52,13 @@ Encoder::Encoder( GPIO_TypeDef* Port1, GPIO_TypeDef* Port2,
 	TIM_EncoderInterfaceConfig(Tim, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Rising);
 	TIM_Cmd(Tim, ENABLE);
 
-	TIM_SetCounter(Tim, (uint32_t) 16000);
+	TIM_SetCounter(Tim, (uint32_t) 20000);
 	Encoder_Tim = Tim;
 };
 
-uint32_t Encoder::position(){
+uint32_t Encoder::get_position(){
 	return TIM_GetCounter(Encoder_Tim);
 };
-
+void Encoder::set_position(uint32_t pos){
+	TIM_SetCounter(Encoder_Tim, pos);
+};
