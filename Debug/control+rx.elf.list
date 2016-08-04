@@ -21,21 +21,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
   8 .ARM.attributes 00000030  00000000  00000000  000181a8  2**0
                   CONTENTS, READONLY
-  9 .debug_info   0000fd2b  00000000  00000000  000181d8  2**0
+  9 .debug_info   0000fd4f  00000000  00000000  000181d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_abbrev 0000342e  00000000  00000000  00027f03  2**0
+ 10 .debug_abbrev 0000342e  00000000  00000000  00027f27  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_aranges 00000f10  00000000  00000000  0002b338  2**3
+ 11 .debug_aranges 00000f10  00000000  00000000  0002b358  2**3
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000d58  00000000  00000000  0002c248  2**3
+ 12 .debug_ranges 00000d58  00000000  00000000  0002c268  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   00005d2e  00000000  00000000  0002cfa0  2**0
+ 13 .debug_line   00005d2d  00000000  00000000  0002cfc0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00004f57  00000000  00000000  00032cce  2**0
+ 14 .debug_str    00004f66  00000000  00000000  00032ced  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .comment      00000082  00000000  00000000  00037c25  2**0
+ 15 .comment      00000082  00000000  00000000  00037c53  2**0
                   CONTENTS, READONLY
- 16 .debug_frame  00003a8c  00000000  00000000  00037ca8  2**2
+ 16 .debug_frame  00003a90  00000000  00000000  00037cd8  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -12448,7 +12448,7 @@ uint8_t NRF::RECEIVE(uint8_t* data){
  800751c:	2107      	movs	r1, #7
  800751e:	2201      	movs	r2, #1
  8007520:	47a0      	blx	r4
-	for (int i=0;i<0xffff;i++);
+	STD_ITER_DELAY
  8007522:	2300      	movs	r3, #0
  8007524:	617b      	str	r3, [r7, #20]
  8007526:	e002      	b.n	800752e <_ZN3NRF7RECEIVEEPh+0x4a>
@@ -12456,7 +12456,7 @@ uint8_t NRF::RECEIVE(uint8_t* data){
  800752a:	3301      	adds	r3, #1
  800752c:	617b      	str	r3, [r7, #20]
  800752e:	697a      	ldr	r2, [r7, #20]
- 8007530:	f64f 73fe 	movw	r3, #65534	; 0xfffe
+ 8007530:	f640 63e1 	movw	r3, #3809	; 0xee1
  8007534:	429a      	cmp	r2, r3
  8007536:	ddf7      	ble.n	8007528 <_ZN3NRF7RECEIVEEPh+0x44>
 
@@ -12475,7 +12475,7 @@ uint8_t NRF::RECEIVE(uint8_t* data){
  800754e:	2107      	movs	r1, #7
  8007550:	2201      	movs	r2, #1
  8007552:	47a0      	blx	r4
-	for (int i=0;i<0xffff;i++);
+	STD_ITER_DELAY
  8007554:	2300      	movs	r3, #0
  8007556:	613b      	str	r3, [r7, #16]
  8007558:	e002      	b.n	8007560 <_ZN3NRF7RECEIVEEPh+0x7c>
@@ -12483,7 +12483,7 @@ uint8_t NRF::RECEIVE(uint8_t* data){
  800755c:	3301      	adds	r3, #1
  800755e:	613b      	str	r3, [r7, #16]
  8007560:	693a      	ldr	r2, [r7, #16]
- 8007562:	f64f 73fe 	movw	r3, #65534	; 0xfffe
+ 8007562:	f640 63e1 	movw	r3, #3809	; 0xee1
  8007566:	429a      	cmp	r2, r3
  8007568:	ddf7      	ble.n	800755a <_ZN3NRF7RECEIVEEPh+0x76>
 
@@ -12528,7 +12528,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  800759c:	4611      	mov	r1, r2
  800759e:	2201      	movs	r2, #1
  80075a0:	47a0      	blx	r4
-	for (int i=0;i<0xffff;i++);
+	STD_ITER_DELAY
  80075a2:	2300      	movs	r3, #0
  80075a4:	61fb      	str	r3, [r7, #28]
  80075a6:	e002      	b.n	80075ae <_ZN3NRF12READ_RX_FIFOEPh+0x3a>
@@ -12536,7 +12536,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  80075aa:	3301      	adds	r3, #1
  80075ac:	61fb      	str	r3, [r7, #28]
  80075ae:	69fa      	ldr	r2, [r7, #28]
- 80075b0:	f64f 73fe 	movw	r3, #65534	; 0xfffe
+ 80075b0:	f640 63e1 	movw	r3, #3809	; 0xee1
  80075b4:	429a      	cmp	r2, r3
  80075b6:	ddf7      	ble.n	80075a8 <_ZN3NRF12READ_RX_FIFOEPh+0x34>
 
@@ -12551,7 +12551,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  80075c8:	461a      	mov	r2, r3
  80075ca:	2300      	movs	r3, #0
  80075cc:	f7ff f8f2 	bl	80067b4 <_ZN3SPI3CMDEhhPhS0_>
-	for (int i=0;i<0xffff;i++);
+	STD_ITER_DELAY
  80075d0:	2300      	movs	r3, #0
  80075d2:	61bb      	str	r3, [r7, #24]
  80075d4:	e002      	b.n	80075dc <_ZN3NRF12READ_RX_FIFOEPh+0x68>
@@ -12559,7 +12559,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  80075d8:	3301      	adds	r3, #1
  80075da:	61bb      	str	r3, [r7, #24]
  80075dc:	69ba      	ldr	r2, [r7, #24]
- 80075de:	f64f 73fe 	movw	r3, #65534	; 0xfffe
+ 80075de:	f640 63e1 	movw	r3, #3809	; 0xee1
  80075e2:	429a      	cmp	r2, r3
  80075e4:	ddf7      	ble.n	80075d6 <_ZN3NRF12READ_RX_FIFOEPh+0x62>
 
@@ -12576,7 +12576,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  80075f4:	2107      	movs	r1, #7
  80075f6:	2201      	movs	r2, #1
  80075f8:	47a0      	blx	r4
-	for (int i=0;i<0xffff;i++);
+	STD_ITER_DELAY
  80075fa:	2300      	movs	r3, #0
  80075fc:	617b      	str	r3, [r7, #20]
  80075fe:	e002      	b.n	8007606 <_ZN3NRF12READ_RX_FIFOEPh+0x92>
@@ -12584,7 +12584,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  8007602:	3301      	adds	r3, #1
  8007604:	617b      	str	r3, [r7, #20]
  8007606:	697a      	ldr	r2, [r7, #20]
- 8007608:	f64f 73fe 	movw	r3, #65534	; 0xfffe
+ 8007608:	f640 63e1 	movw	r3, #3809	; 0xee1
  800760c:	429a      	cmp	r2, r3
  800760e:	ddf7      	ble.n	8007600 <_ZN3NRF12READ_RX_FIFOEPh+0x8c>
 
@@ -12603,7 +12603,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  8007628:	2201      	movs	r2, #1
  800762a:	47a0      	blx	r4
 
-	for (int i=0;i<0xffff;i++);
+	STD_ITER_DELAY
  800762c:	2300      	movs	r3, #0
  800762e:	613b      	str	r3, [r7, #16]
  8007630:	e002      	b.n	8007638 <_ZN3NRF12READ_RX_FIFOEPh+0xc4>
@@ -12611,7 +12611,7 @@ void NRF::READ_RX_FIFO(uint8_t* pointer){
  8007634:	3301      	adds	r3, #1
  8007636:	613b      	str	r3, [r7, #16]
  8007638:	693a      	ldr	r2, [r7, #16]
- 800763a:	f64f 73fe 	movw	r3, #65534	; 0xfffe
+ 800763a:	f640 63e1 	movw	r3, #3809	; 0xee1
  800763e:	429a      	cmp	r2, r3
  8007640:	ddf7      	ble.n	8007632 <_ZN3NRF12READ_RX_FIFOEPh+0xbe>
 	return;
@@ -15090,7 +15090,7 @@ Robo::Robo()
  800860c:	4413      	add	r3, r2
  800860e:	605c      	str	r4, [r3, #4]
 	  motors[i]     = new Motor(ahpwms[i], algpios[i], bhpwms[i], blgpios[i], encoders[i], robo_timer);
- 8008610:	2078      	movs	r0, #120	; 0x78
+ 8008610:	2080      	movs	r0, #128	; 0x80
  8008612:	f002 f94d 	bl	800a8b0 <_Znwj>
  8008616:	4604      	mov	r4, r0
  8008618:	687a      	ldr	r2, [r7, #4]
@@ -15870,11 +15870,11 @@ Motor::Motor(Pwm *A_High,
  8008c06:	bf00      	nop
 
 08008c08 <_ZN5Motor13Control_SpeedEs>:
+																//pos_calc_answer estar dentro
 																//do objeto
 	this->Answer(answer);
 	return;
 };
-
 void Motor::Control_Speed(int16_t hold_speed){
  8008c08:	b580      	push	{r7, lr}
  8008c0a:	b084      	sub	sp, #16
@@ -15896,7 +15896,7 @@ void Motor::Control_Speed(int16_t hold_speed){
  8008c24:	4618      	mov	r0, r3
  8008c26:	f644 6120 	movw	r1, #20000	; 0x4e20
  8008c2a:	f000 fa77 	bl	800911c <_ZN7Encoder12set_positionEm>
-	speed = 100*((int16_t)position-20000);
+	speed = 1000*((int16_t)position-20000);
  8008c2e:	68fb      	ldr	r3, [r7, #12]
  8008c30:	b29b      	uxth	r3, r3
  8008c32:	b21b      	sxth	r3, r3
@@ -15904,24 +15904,24 @@ void Motor::Control_Speed(int16_t hold_speed){
  8008c38:	3b20      	subs	r3, #32
  8008c3a:	b29b      	uxth	r3, r3
  8008c3c:	461a      	mov	r2, r3
- 8008c3e:	0092      	lsls	r2, r2, #2
- 8008c40:	4413      	add	r3, r2
- 8008c42:	461a      	mov	r2, r3
- 8008c44:	0091      	lsls	r1, r2, #2
- 8008c46:	461a      	mov	r2, r3
- 8008c48:	460b      	mov	r3, r1
- 8008c4a:	4413      	add	r3, r2
- 8008c4c:	009b      	lsls	r3, r3, #2
- 8008c4e:	b29b      	uxth	r3, r3
- 8008c50:	817b      	strh	r3, [r7, #10]
-    vel_answer = Spe_Calc_Answer(speed, hold_speed);
- 8008c52:	f9b7 200a 	ldrsh.w	r2, [r7, #10]
- 8008c56:	f9b7 3002 	ldrsh.w	r3, [r7, #2]
- 8008c5a:	6878      	ldr	r0, [r7, #4]
- 8008c5c:	4611      	mov	r1, r2
- 8008c5e:	461a      	mov	r2, r3
- 8008c60:	f000 f85e 	bl	8008d20 <_ZN5Motor15Spe_Calc_AnswerEll>
- 8008c64:	4603      	mov	r3, r0
+ 8008c3e:	0152      	lsls	r2, r2, #5
+ 8008c40:	1ad2      	subs	r2, r2, r3
+ 8008c42:	0092      	lsls	r2, r2, #2
+ 8008c44:	4413      	add	r3, r2
+ 8008c46:	00db      	lsls	r3, r3, #3
+ 8008c48:	b29b      	uxth	r3, r3
+ 8008c4a:	817b      	strh	r3, [r7, #10]
+    vel_answer = -Spe_Calc_Answer(speed, hold_speed);
+ 8008c4c:	f9b7 200a 	ldrsh.w	r2, [r7, #10]
+ 8008c50:	f9b7 3002 	ldrsh.w	r3, [r7, #2]
+ 8008c54:	6878      	ldr	r0, [r7, #4]
+ 8008c56:	4611      	mov	r1, r2
+ 8008c58:	461a      	mov	r2, r3
+ 8008c5a:	f000 f861 	bl	8008d20 <_ZN5Motor15Spe_Calc_AnswerEll>
+ 8008c5e:	4603      	mov	r3, r0
+ 8008c60:	b29b      	uxth	r3, r3
+ 8008c62:	425b      	negs	r3, r3
+ 8008c64:	b29b      	uxth	r3, r3
  8008c66:	813b      	strh	r3, [r7, #8]
 	this->Answer((int16_t)vel_answer);
  8008c68:	f9b7 3008 	ldrsh.w	r3, [r7, #8]
@@ -15936,7 +15936,10 @@ void Motor::Control_Speed(int16_t hold_speed){
  8008c7a:	bd80      	pop	{r7, pc}
 
 08008c7c <_ZN5Motor6AnswerEs>:
-
+	last_speed_pos = speed;
+	return;
+};
+*/
 void Motor::Answer(int16_t answer)
 {
  8008c7c:	b580      	push	{r7, lr}
@@ -16033,7 +16036,7 @@ void Motor::Answer(int16_t answer)
  8008d1e:	bf00      	nop
 
 08008d20 <_ZN5Motor15Spe_Calc_AnswerEll>:
-	return (int16_t) ((error)*0.81+(integral)*0.18 - derivative*2.25);
+	return (int16_t) -((error)*0.81+(integral)*0.18 - derivative*2.25);
 	//Kp = 0.81, Ki = 0.36, Kd = 2.25
 }
 
@@ -16140,7 +16143,7 @@ int16_t Motor::Spe_Calc_Answer(int32_t speed, int32_t hold_speed){
  8008dc6:	ddec      	ble.n	8008da2 <_ZN5Motor15Spe_Calc_AnswerEll+0x82>
 		integral = integral + Speed_Last_Error[i];
 	}
-	vel_answer=last_vel_answer + error*0.04 + derivative*0;
+	vel_answer=last_vel_answer + error*0.004 + derivative*0;
  8008dc8:	68fb      	ldr	r3, [r7, #12]
  8008dca:	e9d3 451c 	ldrd	r4, r5, [r3, #112]	; 0x70
  8008dce:	69b8      	ldr	r0, [r7, #24]
@@ -16216,8 +16219,8 @@ int16_t Motor::Spe_Calc_Answer(int32_t speed, int32_t hold_speed){
  8008e7a:	46bd      	mov	sp, r7
  8008e7c:	bdb0      	pop	{r4, r5, r7, pc}
  8008e7e:	bf00      	nop
- 8008e80:	47ae147b 	.word	0x47ae147b
- 8008e84:	3fa47ae1 	.word	0x3fa47ae1
+ 8008e80:	d2f1a9fc 	.word	0xd2f1a9fc
+ 8008e84:	3f70624d 	.word	0x3f70624d
  8008e88:	00000000 	.word	0x00000000
  8008e8c:	c08f4000 	.word	0xc08f4000
  8008e90:	fffffc18 	.word	0xfffffc18

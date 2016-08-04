@@ -20,7 +20,6 @@ Motor::Motor(Pwm *A_High,
 	Motor_Enc = Enc;
 	Motor_Time = MTimer;
 }
-
 void Motor::Control_Pos(uint32_t hold_position){
 	uint32_t position;
 	int16_t answer;
@@ -31,18 +30,28 @@ void Motor::Control_Pos(uint32_t hold_position){
 	this->Answer(answer);
 	return;
 };
-
 void Motor::Control_Speed(int16_t hold_speed){
 	int16_t speed;
 	int16_t vel_answer;
 	uint32_t position = Motor_Enc->get_position();
 	Motor_Enc->set_position((uint32_t) 20000);
-	speed = 100*((int16_t)position-20000);
-    vel_answer = Spe_Calc_Answer(speed, hold_speed);
+	speed = 1000*((int16_t)position-20000);
+    vel_answer = -Spe_Calc_Answer(speed, hold_speed);
 	this->Answer((int16_t)vel_answer);
 	return;
 };
-
+/*
+void Motor::Control_Speed(int16_t hold_speed){
+	int16_t speed;
+	int16_t vel_answer;
+	uint32_t position = Motor_Enc->get_position();
+	Motor_Enc->set_position((uint32_t) 20000);
+	speed = last_speed_pos -(int16_t)position-20000+hold_speed;
+	Control_Pos((uint32_t)(20000+speed));
+	last_speed_pos = speed;
+	return;
+};
+*/
 void Motor::Answer(int16_t answer)
 {
 	if (answer > 0)
@@ -90,7 +99,7 @@ int16_t Motor::Pos_Calc_Answer(uint32_t position, uint32_t hold_position)
 		integral = integral+Pos_Last_Error[i];
 	}
 	if (integral > 600/0.18) integral = 600/0.18;
-	return (int16_t) ((error)*0.81+(integral)*0.18 - derivative*2.25);
+	return (int16_t) -((error)*0.81+(integral)*0.18 - derivative*2.25);
 	//Kp = 0.81, Ki = 0.36, Kd = 2.25
 }
 
@@ -113,7 +122,7 @@ int16_t Motor::Spe_Calc_Answer(int32_t speed, int32_t hold_speed){
 	for(int i=0; i<10; i++){
 		integral = integral + Speed_Last_Error[i];
 	}
-	vel_answer=last_vel_answer + error*0.04 + derivative*0;
+	vel_answer=last_vel_answer + error*0.004 + derivative*0;
 	if(vel_answer > 1000){
 		vel_answer = 1000;
 	}
