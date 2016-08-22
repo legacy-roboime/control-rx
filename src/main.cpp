@@ -14,7 +14,7 @@
 
 /* Includes */
 #include "main.h"
-
+#include "adc.h"
 #include "own_libraries/NRF24.h"
 #include "own_libraries/CONFIG.h"
 #include "own_libraries/SPI_interface.h"
@@ -48,6 +48,9 @@ Timer_Time robo_irq_timer;
 
 int main(void)
 {
+  adc volt;
+  volt.ADC_Config(10, GPIOC, GPIO_Pin_0);
+
   SysTick_Config(SystemCoreClock/1000);
 
   STM_EVAL_LEDInit(LED3);
@@ -61,6 +64,7 @@ int main(void)
   radio.start_listen();
   while (1)
   {
+	    volt.adc_getConversion();
 		if(GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_5)){
 		  STM_EVAL_LEDOn(LED3);
 		  STM_EVAL_LEDOff(LED4);
