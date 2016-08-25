@@ -15,6 +15,7 @@
 /* Includes */
 #include "main.h"
 #include "adc.h"
+#include "dibre.h"
 #include "own_libraries/NRF24.h"
 #include "own_libraries/CONFIG.h"
 #include "own_libraries/SPI_interface.h"
@@ -48,6 +49,10 @@ Timer_Time robo_irq_timer;
 
 int main(void)
 {
+
+  dibre ronaldo;
+  ronaldo.Set_Vel(0);
+
   adc volt;
   volt.ADC_Config(10, GPIOC, GPIO_Pin_0);
 
