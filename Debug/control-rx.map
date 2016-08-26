@@ -3305,7 +3305,7 @@ OUTPUT(control-rx.elf elf32-littlearm)
  .debug_ranges  0x00000d58      0x138 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.o
  .debug_ranges  0x00000e90       0x30 Libraries\STM32F4xx_StdPeriph_Driver\src\misc.o
 
-.debug_line     0x00000000     0x666b
+.debug_line     0x00000000     0x666d
  .debug_line    0x00000000      0x2cf src\tiny_printf.o
  .debug_line    0x000002cf      0x1f4 src\system_stm32f4xx.o
  .debug_line    0x000004c3      0x1d1 src\stm32f4xx_it.o
@@ -3320,23 +3320,23 @@ OUTPUT(control-rx.elf elf32-littlearm)
  .debug_line    0x00001fd1      0x242 src\control\adc.o
  .debug_line    0x00002213      0x206 src\control\TimerTime2.o
  .debug_line    0x00002419      0x231 src\control\TimerTime.o
- .debug_line    0x0000264a      0x26b src\control\Robo.o
- .debug_line    0x000028b5      0x25c src\control\Pwm.o
- .debug_line    0x00002b11      0x2a6 src\control\Motor.o
- .debug_line    0x00002db7      0x229 src\control\GPIO.o
- .debug_line    0x00002fe0      0x2bf src\control\Encoder.o
- .debug_line    0x0000329f      0x6e2 Utilities\STM32F4-Discovery\stm32f4_discovery_audio_codec.o
- .debug_line    0x00003981      0x285 Utilities\STM32F4-Discovery\stm32f4_discovery.o
- .debug_line    0x00003c06      0xa4f Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.o
- .debug_line    0x00004655      0x20f Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.o
- .debug_line    0x00004864      0x445 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.o
- .debug_line    0x00004ca9      0x597 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.o
- .debug_line    0x00005240      0x329 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.o
- .debug_line    0x00005569      0x28f Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.o
- .debug_line    0x000057f8      0x3c6 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.o
- .debug_line    0x00005bbe      0x342 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dac.o
- .debug_line    0x00005f00      0x53c Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.o
- .debug_line    0x0000643c      0x22f Libraries\STM32F4xx_StdPeriph_Driver\src\misc.o
+ .debug_line    0x0000264a      0x26d src\control\Robo.o
+ .debug_line    0x000028b7      0x25c src\control\Pwm.o
+ .debug_line    0x00002b13      0x2a6 src\control\Motor.o
+ .debug_line    0x00002db9      0x229 src\control\GPIO.o
+ .debug_line    0x00002fe2      0x2bf src\control\Encoder.o
+ .debug_line    0x000032a1      0x6e2 Utilities\STM32F4-Discovery\stm32f4_discovery_audio_codec.o
+ .debug_line    0x00003983      0x285 Utilities\STM32F4-Discovery\stm32f4_discovery.o
+ .debug_line    0x00003c08      0xa4f Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.o
+ .debug_line    0x00004657      0x20f Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.o
+ .debug_line    0x00004866      0x445 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.o
+ .debug_line    0x00004cab      0x597 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.o
+ .debug_line    0x00005242      0x329 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.o
+ .debug_line    0x0000556b      0x28f Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.o
+ .debug_line    0x000057fa      0x3c6 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.o
+ .debug_line    0x00005bc0      0x342 Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dac.o
+ .debug_line    0x00005f02      0x53c Libraries\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.o
+ .debug_line    0x0000643e      0x22f Libraries\STM32F4xx_StdPeriph_Driver\src\misc.o
 
 .debug_str      0x00000000     0x5687
  .debug_str     0x00000000      0x594 src\tiny_printf.o

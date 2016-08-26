@@ -7,6 +7,12 @@
 #include "Robo.h"
 #include "pins.h"
 
+#define sin_phi 0.5
+#define cos_phi 0.86603
+#define sin_theta 0.70711
+#define cos_theta 0.70711
+
+
 Robo::Robo()
 {
 	robo_timer = new Timer_Time2(); //valores ja setupados pro timer_time
@@ -30,11 +36,32 @@ void Robo::control_speed(){
 		motors[i]->Control_Speed(speed[i]);
 	}
 }
+
 void Robo::set_speed(int v_r, int v_t, int w){
 	uint8_t R = 1; //TODO valor temporario
-	speed[0] = -v_r*0.5 + v_t*0.86603 + w*R;
-	speed[1] = -v_r*0.5 - v_t*0.86603 + w*R;
-	speed[2] = v_r*0.70711 - v_t*0.70711 + w*R;
-	speed[3] = v_r*0.70711 + v_t*0.70711 + w*R;
+	speed[0] = -v_r*sin_phi + v_t*cos_phi + w*R;
+	speed[2] = -v_r*sin_phi - v_t*cos_phi + w*R;
+	speed[3] = v_r*sin_theta - v_t*cos_theta + w*R;
+	speed[1] = v_r*sin_theta + v_t*cos_theta + w*R;
+	 /*o vetor original era v[0], v[1], v[2], v[3] porém a numeração
+	 * da placa do robo não coincide com a numeração do artigo das omnirodas
+	 * a numeração daqui foi mudada para ser compativel com a placa
+	 *
+	 *  modelo da matriz pelo artigo
+	 *     __O__
+	 * (1)/     \(0)
+	 *   |       |
+	 *   |       |
+	 * (2)\_____/(3)
+	 *
+	 * desenho da placa
+	 *     __O__
+	 * (2)/     \(0)
+	 *   |       |
+	 *   |       |
+	 * (3)\_____/(1)
+	 *
+	 */
+
 	return;
 }
